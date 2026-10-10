@@ -20,7 +20,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {OwnerService} from '../owner.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Owner} from '../owner';
@@ -29,6 +29,7 @@ import {Owner} from '../owner';
 @Component({
   selector: 'app-owner-detail',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './owner-detail.component.html',
   styleUrls: ['./owner-detail.component.css']
 })

@@ -21,7 +21,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Pet} from '../pet';
 import {PetService} from '../pet.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -35,6 +35,7 @@ import {OwnerService} from '../../owners/owner.service';
 @Component({
   selector: 'app-pet-edit',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './pet-edit.component.html',
   styleUrls: ['./pet-edit.component.css']
 })

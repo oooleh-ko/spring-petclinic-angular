@@ -20,7 +20,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Vet} from '../vet';
 import {VetService} from '../vet.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -31,6 +31,7 @@ import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-vet-edit',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './vet-edit.component.html',
   styleUrls: ['./vet-edit.component.css']
 })

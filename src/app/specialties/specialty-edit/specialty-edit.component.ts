@@ -20,7 +20,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Specialty} from '../specialty';
 import {SpecialtyService} from '../specialty.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -28,6 +28,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-specialty-edit',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './specialty-edit.component.html',
   styleUrls: ['./specialty-edit.component.css']
 })

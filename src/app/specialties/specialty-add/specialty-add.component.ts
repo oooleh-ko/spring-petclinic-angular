@@ -17,6 +17,7 @@
  */
 
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   OnInit,
@@ -30,6 +31,7 @@ import { SpecialtyService } from '../specialty.service';
 @Component({
   selector: 'app-specialty-add',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './specialty-add.component.html',
   styleUrls: ['./specialty-add.component.css'],
 })

@@ -1,10 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PetType} from '../pettype';
 import {PetTypeService} from '../pettype.service';
 
 @Component({
   selector: 'app-pettype-add',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './pettype-add.component.html',
   styleUrls: ['./pettype-add.component.css']
 })

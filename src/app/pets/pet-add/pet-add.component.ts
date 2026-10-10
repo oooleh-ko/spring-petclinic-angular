@@ -21,7 +21,7 @@
  */
 
 
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Pet} from '../pet';
 import {PetType} from '../../pettypes/pettype';
 import {Owner} from '../../owners/owner';
@@ -35,6 +35,7 @@ import moment from 'moment';
 @Component({
   selector: 'app-pet-add',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './pet-add.component.html',
   styleUrls: ['./pet-add.component.css']
 })

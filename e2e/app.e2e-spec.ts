@@ -145,6 +145,35 @@ test('displays backend data on list pages', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Harold Davis' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'George Franklin' })).toHaveCount(0);
 });
+
+test('displays backend data on detail and edit pages', async ({ page }) => {
+  const pet = { ...owner.pets[0], ownerId: owner.id };
+
+  await page.route('**/petclinic/api/pets/1', route => route.fulfill({ json: pet }));
+  await page.route('**/petclinic/api/pettypes', route => route.fulfill({ json: [pet.type] }));
+  await page.route('**/petclinic/api/vets/1', route => route.fulfill({ json: vets[0] }));
+
+  await page.goto('/petclinic/owners/1');
+  await expect(page.locator('.ownerFullName')).toHaveText('George Franklin');
+  await expect(page.locator('main')).toContainText('110 W. Liberty St.');
+  await expect(page.locator('main')).toContainText('Leo');
+
+  await page.getByRole('button', { name: 'Add Visit' }).click();
+  await expect(page).toHaveURL(/\/petclinic\/pets\/1\/visits\/add$/);
+  await expect(page.locator('main')).toContainText('Leo');
+  await expect(page.locator('main')).toContainText('George Franklin');
+
+  await page.goto('/petclinic/owners/1/edit');
+  await expect(page.locator('#firstName')).toHaveValue('George');
+  await expect(page.locator('#city')).toHaveValue('Madison');
+
+  await page.goto('/petclinic/pets/1/edit');
+  await expect(page.locator('#name')).toHaveValue('Leo');
+
+  await page.goto('/petclinic/vets/1/edit');
+  await expect(page.locator('#firstName')).toHaveValue('James');
+  await expect(page.locator('#lastName')).toHaveValue('Carter');
+});
 test('desktop dropdowns open and navigate to owners and veterinarians', async ({ page }) => {
   await page.goto('/');
 

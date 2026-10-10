@@ -21,7 +21,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PetService} from '../pet.service';
 import {Pet} from '../pet';
@@ -29,6 +29,7 @@ import {Pet} from '../pet';
 @Component({
   selector: 'app-pet-list',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.css']
 })

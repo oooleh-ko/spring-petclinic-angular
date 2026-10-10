@@ -20,7 +20,7 @@
  * @author Vitaliy Fedoriv
  */
 
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Visit} from '../visit';
 import {VisitService} from '../visit.service';
 import {Router} from '@angular/router';
@@ -28,6 +28,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-visit-list',
   standalone: false,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './visit-list.component.html',
   styleUrls: ['./visit-list.component.css']
 })
